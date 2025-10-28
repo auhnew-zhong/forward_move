@@ -1,0 +1,8 @@
+/home/auhnewzhong/forward_move/build/CMakeFiles/rvalue_basics.dir
+/home/auhnewzhong/forward_move/build/CMakeFiles/move_semantics.dir
+/home/auhnewzhong/forward_move/build/CMakeFiles/perfect_forwarding.dir
+/home/auhnewzhong/forward_move/build/CMakeFiles/comprehensive_example.dir
+/home/auhnewzhong/forward_move/build/CMakeFiles/cpp20_advanced.dir
+/home/auhnewzhong/forward_move/build/CMakeFiles/run_all_examples.dir
+/home/auhnewzhong/forward_move/build/CMakeFiles/edit_cache.dir
+/home/auhnewzhong/forward_move/build/CMakeFiles/rebuild_cache.dir

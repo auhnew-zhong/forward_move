@@ -1,0 +1,1 @@
+/usr/lib/ccache/c++  -Wall -Wextra -pedantic -fcoroutines -g3 -O0 -DDEBUG -fno-omit-frame-pointer -fno-inline CMakeFiles/perfect_forwarding.dir/examples/perfect_forwarding.cpp.o -o bin/perfect_forwarding

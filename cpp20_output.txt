@@ -1,0 +1,2198 @@
+=== C++20 风格的移动语义与完美转发示例 ===
+
+=== 概念约束风格与完美转发演示 ===
+ExpensiveResource 'ID_001' 构造 (大小: 1000)
+ResourceManager '资源1' 创建资源
+ExpensiveResource 'ID_002' 构造 (大小: 2000)
+ResourceManager '资源2' 创建资源
+管理器1: ID_001 (大小: 1000)
+ResourceManager '资源1' 移动构造
+移动后管理器3: 资源1
+使用移动语义转发: NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+使用移动语义转发: N23ConceptsStyleForwarding15ResourceManagerINS_17ExpensiveResourceEEE
+ResourceManager '资源1' 析构
+ExpensiveResource 'ID_001' 析构
+ResourceManager '资源2' 析构
+ExpensiveResource 'ID_002' 析构
+
+=== 现代异步设计与移动语义演示 ===
+TaskScheduler '主调度器' 创建
+Task '数据处理' 创建 (优先级: 3)
+Task '网络请求' 创建 (优先级: 5)
+Task '数据处理' 移动构造
+Task '' 析构
+Task '文件操作' 创建 (优先级: 1)
+Task '数据处理' 移动构造
+Task '' 析构
+Task '网络请求' 移动构造
+Task '' 析构
+调度器任务数量: 3
+调度器 '主调度器' 开始执行所有任务
+Task '网络请求' 移动构造
+Task '数据处理' 移动赋值
+Task '网络请求' 移动赋值
+Task '' 析构
+Task '文件操作' 移动构造
+Task '文件操作' 移动赋值
+Task '' 析构
+执行任务: 网络请求
+  -> 发送网络请求...
+执行任务: 数据处理
+  -> 处理数据中...
+执行任务: 文件操作
+  -> 执行文件操作...
+调度器 '主调度器' 完成所有任务
+TaskScheduler '主调度器' 移动构造
+移动后调度器任务数量: 3
+TaskScheduler '主调度器' 析构
+Task '网络请求' 析构
+Task '数据处理' 析构
+Task '文件操作' 析构
+TaskScheduler '' 析构
+
+=== 高级完美转发技术演示 ===
+CallableWrapper '乘法器' 创建
+CallableWrapper '加法器' 创建
+CallableWrapper '乘法器' 调用
+CallableWrapper '加法器' 调用
+包装器处理结果: 20
+ChainableProcessor '数值处理' 创建
+ChainableProcessor '数值处理' 链式调用
+  -> 步骤1: 42 * 3 = 126
+ChainableProcessor '数值处理->then' 创建
+ChainableProcessor '数值处理->then' 链式调用
+  -> 步骤2: 126 + 100 = 226
+ChainableProcessor '数值处理->then->then' 创建
+ChainableProcessor '数值处理->then->then' 链式调用
+  -> 步骤3: 226 / 2 = 113
+ChainableProcessor '数值处理->then->then->then' 创建
+ChainableProcessor '数值处理->then->then' 析构
+ChainableProcessor '数值处理->then' 析构
+ChainableProcessor '数值处理' 析构
+链式处理最终结果: 113
+提取的最终结果: 113
+ChainableProcessor '数值处理->then->then->then' 析构
+CallableWrapper '加法器' 析构
+CallableWrapper '乘法器' 析构
+
+=== 高级模板元编程与完美转发演示 ===
+SerializableObject '对象1' 创建
+SerializableObject '对象1' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+序列化结果: N17AdvancedTemplates18SerializableObjectE:{name:'对象1', value:42}
+SerializableObject '对象1' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 移动构造
+移动后序列化结果: N17AdvancedTemplates18SerializableObjectE:{name:'对象1', value:42}
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '对象1' 析构
+UniversalSerializer<> 析构
+SerializableObject '' 析构
+
+=== 性能基准测试 ===
+大对象移动构造: 2041 微秒 (100 次迭代)
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+ExpensiveResource 'PERF_ID' 构造 (大小: 1000)
+ResourceManager '性能测试' 创建资源
+ResourceManager '性能测试' 析构
+ExpensiveResource 'PERF_ID' 析构
+完美转发工厂: 241 微秒 (100 次迭代)
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+ChainableProcessor '性能测试' 创建
+ChainableProcessor '性能测试' 链式调用
+ChainableProcessor '性能测试->then' 创建
+ChainableProcessor '性能测试->then' 链式调用
+ChainableProcessor '性能测试->then->then' 创建
+ChainableProcessor '性能测试->then->then' 链式调用
+ChainableProcessor '性能测试->then->then->then' 创建
+ChainableProcessor '性能测试->then->then' 析构
+ChainableProcessor '性能测试->then' 析构
+ChainableProcessor '性能测试' 析构
+ChainableProcessor '性能测试->then->then->then' 析构
+链式处理: 223 微秒 (100 次迭代)
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+SerializableObject '性能测试对象' 创建
+SerializableObject '性能测试对象' 移动构造
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 创建
+SerializableObject '' 析构
+UniversalSerializer<N17AdvancedTemplates18SerializableObjectE> 析构
+SerializableObject '性能测试对象' 析构
+模板序列化: 168 微秒 (100 次迭代)
+
+=== 所有演示完成 ===
